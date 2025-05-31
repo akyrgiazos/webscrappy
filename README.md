@@ -59,6 +59,33 @@ WebScrappy is a Python-based web scraping tool designed to extract content from 
 3.  **Access Scraped Content:**
     The scraped content will be saved as Markdown files in the `scraped_content/` directory. Each file will be named based on the URL it was scraped from (e.g., `scraped_content/example_com_page1.md`).
 
+## Command-Line Arguments
+
+The script accepts several command-line arguments to customize its behavior:
+
+*   `urls_file`: (Required) Path to the text file containing URLs to scrape (one URL per line).
+*   `--output-dir <dir>` or `-o <dir>`: Specifies the directory where scraped markdown files will be saved.
+    *   Default: `scraped_content`
+*   `--delay <seconds>` or `-d <seconds>`: Sets the delay in seconds between requests to the same website.
+    *   Default: `1.0`
+*   `--concurrent <num>` or `-c <num>`: Defines the number of concurrent requests Scrapy will perform.
+    *   Default: `5`
+*   `--timeout <seconds>` or `-t <seconds>`: Sets the timeout in seconds for web requests.
+    *   Default: `30`
+*   `--user-agent <string>` or `-ua <string>`: Allows specifying a custom User-Agent string for requests.
+    *   Default: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36` (defined in the spider)
+*   `--ignore-robots-txt`: If present, the scraper will ignore `robots.txt` rules.
+    *   Default: `False` (obeys `robots.txt`)
+*   `--log-level <level>` or `-l <level>`: Sets the logging level for Scrapy.
+    *   Choices: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`
+    *   Default: `INFO`
+
+**Example with arguments:**
+
+```bash
+python main.py portal.txt -o my_scrapes -d 2 -c 3 --log-level DEBUG
+```
+
 ## Project Structure
 ```
 webscrappy/
